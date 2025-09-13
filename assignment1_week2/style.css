@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+#name {
+    background-color: rgb(255, 182, 182);
+    border-radius: 20px;
+}
+
+
+img {
+    border-radius: 30px;
+}
