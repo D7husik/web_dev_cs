@@ -1,0 +1,44 @@
+
+body {
+  background-color: #f4f4f4;
+  font-family: Verdana, sans-serif;
+  margin: 20px;
+}
+
+
+h1 {
+  color: navy;
+  font-size: 40px;
+  text-align: center;
+}
+
+h2 {
+  color: seagreen;
+  font-size: 26px;
+}
+
+
+p {
+  color: #444;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+
+a {
+  color: darkred;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+.highlight-box {
+  border: 2px solid #222;
+  padding: 15px;
+  background-color: #e0f7fa;
+  border-radius: 8px;
+}
