@@ -1,0 +1,26 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.accordion h2{
+    margin:0 ;
+}
+.accordion button{
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    background: #444;
+    color: aqua;
+    cursor: pointer;
+}
+.accordion button[aria-expanded="true"]{
+    background-color: blanchedalmond;
+}
+.accordion div{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: none;
+}

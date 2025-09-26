@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Accesible ex</h1>
+
+  <div class="accordion">
+    <h2>
+      <button aria-expanded="false" aria-controls="sect1" id="accordion1">
+        SECTION 1
+      </button>
+    </h2>
+    <div id="sect1" role="region" aria-labelledby="accordion1" hidden>
+      <p>CONTENT FOR section number 1blablabablablabal</p>
+    </div>
+  </div>
+
+  <h2>
+    <button aria-expanded="false" aria-controls="sect2" id="accordion2">
+      Section2
+    </button>
+  </h2>
+  <div id="sect2" role="region" aria-labelledby="accordion2" hidden>
+    <p>Section 2 content</p>
+  </div>
+
+  <h2>
+    <button aria-expanded="false" aria-controls="sect3" id="accordion3">
+      Section3
+    </button>
+  </h2>
+  <div id="sect3" role="region" aria-labelledby="accordion3" hidden>
+    <p>COntent section3</p>
+  </div>
+
+  <!-- JS SMMMTH -->
+  <script>
+    const buttons = document.querySelectorAll(".accordion button, h2 > button");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        
+        buttons.forEach(b => {
+          b.setAttribute("aria-expanded", "false");
+          document.getElementById(b.getAttribute("aria-controls")).hidden = true;
+        });
+
+        if (!expanded) {
+          btn.setAttribute("aria-expanded", "true");
+          document.getElementById(btn.getAttribute("aria-controls")).hidden = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

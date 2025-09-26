@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessible Drag and Drop</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    background: #f4f4f4;
+  }
+  .container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+  }
+  .list {
+    background: #fff;
+    padding: 20px;
+    width: 200px;
+    min-height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+  }
+  .list h2 {
+    text-align: center;
+  }
+  .item {
+    background: #3d98d1;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: grab;
+  }
+  .item:focus {
+    outline: 2px solid #2c11c0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Accessible Drag-and-Drop</h1>
+<div class="container">
+  <div class="list" id="list1" aria-label="List 1" aria-dropeffect="move">
+    <h2>List 1</h2>
+    <div class="item" tabindex="0" draggable="true" aria-grabbed="false">Item 1</div>
+    <div class="item" tabindex="0" draggable="true" aria-grabbed="false">Item 2</div>
+  </div>
+
+  <div class="list" id="list2" aria-label="List 2" aria-dropeffect="move">
+    <h2>List 2</h2>
+  </div>
+</div>
+
+<script>
+let draggedItem = null;
+
+document.querySelectorAll('.item').forEach(item => {
+  item.addEventListener('dragstart', (e) => {
+    draggedItem = item;
+    item.setAttribute('aria-grabbed', 'true');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+
+  item.addEventListener('dragend', () => {
+    item.setAttribute('aria-grabbed', 'false');
+    draggedItem = null;
+  });
+});
+
+document.querySelectorAll('.list').forEach(list => {
+  list.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+
+  list.addEventListener('drop', (e) => {
+    e.preventDefault();
+    if (draggedItem) {
+      list.appendChild(draggedItem);
+    }
+  });
+});
+</script>
+
+</body>
+</html>

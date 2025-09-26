@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom File Upload</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 style="text-align:center;">Custom File Upload</h1>
+
+<div class="file-upload">
+  <label class="custom-btn" for="fileInput">Выберите файл</label>
+  <input type="file" id="fileInput">
+  <span class="file-name" id="fileName">Файл не выбран</span>
+</div>
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const fileName = document.getElementById('fileName');
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length > 0) {
+      fileName.textContent = fileInput.files[0].name;
+    } else {
+      fileName.textContent = 'Файл не выбран';
+    }
+  });
+</script>
+
+</body>
+</html>

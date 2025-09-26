@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 { text-align: center; margin-bottom: 20px; }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    canvas {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h1>Dashboard Example</h1>
+
+<div class="dashboard">
+  <div class="card">
+    <h2>Sales (Line Chart)</h2>
+    <canvas id="lineChart"></canvas>
+  </div>
+  <div class="card">
+    <h2>Users (Bar Chart)</h2>
+    <canvas id="barChart"></canvas>
+  </div>
+  <div class="card">
+    <h2>Revenue (Pie Chart)</h2>
+    <canvas id="pieChart"></canvas>
+  </div>
+</div>
+
+<script>
+
+  const ctxLine = document.getElementById('lineChart').getContext('2d');
+  const lineChart = new Chart(ctxLine, {
+    type: 'line',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+      datasets: [{
+        label: 'Sales',
+        data: [120, 190, 300, 250, 400, 320],
+        borderColor: '#1ea7fd',
+        backgroundColor: 'rgba(30,167,253,0.2)',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: true } }
+    }
+  });
+
+
+  const ctxBar = document.getElementById('barChart').getContext('2d');
+  const barChart = new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+      labels: ['Alice','Bob','Charlie','David','Eve'],
+      datasets: [{
+        label: 'Users',
+        data: [50, 75, 60, 90, 40],
+        backgroundColor: '#ff9800'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } }
+    }
+  });
+
+ 
+  const ctxPie = document.getElementById('pieChart').getContext('2d');
+  const pieChart = new Chart(ctxPie, {
+    type: 'pie',
+    data: {
+      labels: ['Product A','Product B','Product C'],
+      datasets: [{
+        label: 'Revenue',
+        data: [300, 150, 100],
+        backgroundColor: ['#4caf50','#f44336','#2196f3']
+      }]
+    },
+    options: { responsive: true }
+  });
+</script>
+
+</body>
+</html>

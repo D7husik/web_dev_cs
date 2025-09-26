@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple PWA</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#333">
+
+</head>
+<body>
+  <h1> Simple PWA</h1>
+  <p>offline work!</p>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service registered"))
+        .catch(err => console.log("❌", err));
+    }
+  </script>
+</body>
+</html>

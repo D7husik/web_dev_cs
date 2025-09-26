@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="multiStepF">
+        <div class="form-step active">
+            <h2>Step1: pErsonal info</h2>
+            <label >
+                Name:
+                <input type="text" name="name" required>
+            </label>
+            <label >
+                EMAIL:
+                <input type="email" name="emal" required>
+            </label>
+            <button type="button" class="next">NEXT</button>
+        </div>
+
+        <div class="form step">
+            <h2>Step 2 adress</h2>
+            <label >
+                Street:
+                <input type="text" name="street" required>
+            </label>
+            <label >
+                City:
+                <input type="text" name="city" required>
+            </label>
+            <div class="button">
+                <button type="button" class="prev">previous</button>
+                <button type="button" class="next">next</button>
+            </div>
+        </div>
+        
+
+        <div class="form-step">
+            <h2>Step3 : account</h2>
+            <label >
+                Account:
+                <input type="text" name="account" required>
+            </label>
+            <label> Password:
+                <input type="text" name="password" required>
+            </label>
+            <div class="buttons">
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">NExt</button>
+            </div>
+        </div>
+    </form>
+    <script>
+    const steps = document.querySelectorAll(".form-step");
+    const nextBtns = document.querySelectorAll(".next");
+    const prevBtns = document.querySelectorAll(".prev");
+    let currentStep = 0;
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        steps[currentStep].classList.remove("active");
+        currentStep++;
+        steps[currentStep].classList.add("active");
+      });
+    });
+
+    prevBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        steps[currentStep].classList.remove("active");
+        currentStep--;
+        steps[currentStep].classList.add("active");
+      });
+    });
+
+    document.getElementById("multiStepForm").addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Form submitted successfully!");
+    });
+  </script>
+
+    
+</body>
+</html>

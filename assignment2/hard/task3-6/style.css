@@ -1,0 +1,23 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #222;
+}
+.player{
+  background: #333 ;
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+}
+video{
+  display: block;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+.controls{
+  display: flex;
+  gap:10px;
+  align-items: center;
+}
